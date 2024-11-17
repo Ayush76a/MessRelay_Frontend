@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { Typography, Divider, Box, TextField, IconButton } from "@mui/material";
-import { CheckCircle } from "@mui/icons-material";
+// import { CheckCircle } from "@mui/icons-material";
 import { useDispatch } from "react-redux";
 import { setUpdateMessMenu } from "state";
 
@@ -14,10 +14,10 @@ const Menu = ({ menuId, day, breakfast, lunch, snack, dinner, isEditable }) => {
     const snackA = snack.toUpperCase();
     const dinnerA = dinner.toUpperCase();
 
-    const [isEditBreakfast, setIsEditBreakfast] = useState("false");
-    const [isEditLunch, setIsEditLunch] = useState("false");
-    const [isEditSnack, setIsEditSnack] = useState("false");
-    const [isEditDinner, setIsEditDinner] = useState("false");
+    // const [isEditBreakfast, setIsEditBreakfast] = useState("false");
+    // const [isEditLunch, setIsEditLunch] = useState("false");
+    // const [isEditSnack, setIsEditSnack] = useState("false");
+    // const [isEditDinner, setIsEditDinner] = useState("false");
 
     const [editedBreakValue, setEditedBreakValue] = useState(breakfastA);
     const [editedLunchValue, setEditedLunchValue] = useState(lunchA);
@@ -45,83 +45,83 @@ const Menu = ({ menuId, day, breakfast, lunch, snack, dinner, isEditable }) => {
         }
     };
 
-    const handleBreakChange = (e) => {
-        setEditedBreakValue(e.target.value);
-    };
-    const handleLunchChange = (e) => {
-        setEditedLunchValue(e.target.value);
-    };
-    const handleSnackChange = (e) => {
-        setEditedSnackValue(e.target.value);
-    };
-    const handleDinnerChange = (e) => {
-        setEditedDinnerValue(e.target.value);
-    };
+    // const handleBreakChange = (e) => {
+    //     setEditedBreakValue(e.target.value);
+    // };
+    // const handleLunchChange = (e) => {
+    //     setEditedLunchValue(e.target.value);
+    // };
+    // const handleSnackChange = (e) => {
+    //     setEditedSnackValue(e.target.value);
+    // };
+    // const handleDinnerChange = (e) => {
+    //     setEditedDinnerValue(e.target.value);
+    // };
 
-    const handleBreakfastEdit = async () => {
-        const response = await fetch(
-            `${BaseUrl}/admin/menu/update/${menuId}`,
-            {
-                method: "PATCH",
-                headers: { "Content-Type": "application/json" },
-                body: JSON.stringify({
-                    type: "breakfast",
-                    field: editedBreakValue,
-                }),
-            }
-        );
-        const updatedMenu = await response.json();
-        dispatch(setUpdateMessMenu({ menu: updatedMenu }));
-        setIsEditBreakfast(false);
-    };
-    const handleLunchEdit = async () => {
-        const response = await fetch(
-            `${BaseUrl}/admin/menu/update/${menuId}`,
-            {
-                method: "PATCH",
-                headers: { "Content-Type": "application/json" },
-                body: JSON.stringify({
-                    type: "lunch",
-                    field: editedLunchValue,
-                }),
-            }
-        );
-        const updatedMenu = await response.json();
-        dispatch(setUpdateMessMenu({ menu: updatedMenu }));
-        setIsEditLunch(false);
-    };
-    const handleSnackEdit = async () => {
-        const response = await fetch(
-            `${BaseUrl}/admin/menu/update/${menuId}`,
-            {
-                method: "PATCH",
-                headers: { "Content-Type": "application/json" },
-                body: JSON.stringify({
-                    type: "snack",
-                    field: editedSnackValue,
-                }),
-            }
-        );
-        const updatedMenu = await response.json();
-        dispatch(setUpdateMessMenu({ menu: updatedMenu }));
-        setIsEditSnack(false);
-    };
-    const handleDinnerEdit = async () => {
-        const response = await fetch(
-            `${BaseUrl}/admin/menu/update/${menuId}`,
-            {
-                method: "PATCH",
-                headers: { "Content-Type": "application/json" },
-                body: JSON.stringify({
-                    type: "dinner",
-                    field: editedDinnerValue,
-                }),
-            }
-        );
-        const updatedMenu = await response.json();
-        dispatch(setUpdateMessMenu({ menu: updatedMenu }));
-        setIsEditDinner(false);
-    };
+    // const handleBreakfastEdit = async () => {
+    //     const response = await fetch(
+    //         `${BaseUrl}/admin/menu/update/${menuId}`,
+    //         {
+    //             method: "PATCH",
+    //             headers: { "Content-Type": "application/json" },
+    //             body: JSON.stringify({
+    //                 type: "breakfast",
+    //                 field: editedBreakValue,
+    //             }),
+    //         }
+    //     );
+    //     const updatedMenu = await response.json();
+    //     dispatch(setUpdateMessMenu({ menu: updatedMenu }));
+    //     setIsEditBreakfast(false);
+    // };
+    // const handleLunchEdit = async () => {
+    //     const response = await fetch(
+    //         `${BaseUrl}/admin/menu/update/${menuId}`,
+    //         {
+    //             method: "PATCH",
+    //             headers: { "Content-Type": "application/json" },
+    //             body: JSON.stringify({
+    //                 type: "lunch",
+    //                 field: editedLunchValue,
+    //             }),
+    //         }
+    //     );
+    //     const updatedMenu = await response.json();
+    //     dispatch(setUpdateMessMenu({ menu: updatedMenu }));
+    //     setIsEditLunch(false);
+    // };
+    // const handleSnackEdit = async () => {
+    //     const response = await fetch(
+    //         `${BaseUrl}/admin/menu/update/${menuId}`,
+    //         {
+    //             method: "PATCH",
+    //             headers: { "Content-Type": "application/json" },
+    //             body: JSON.stringify({
+    //                 type: "snack",
+    //                 field: editedSnackValue,
+    //             }),
+    //         }
+    //     );
+    //     const updatedMenu = await response.json();
+    //     dispatch(setUpdateMessMenu({ menu: updatedMenu }));
+    //     setIsEditSnack(false);
+    // };
+    // const handleDinnerEdit = async () => {
+    //     const response = await fetch(
+    //         `${BaseUrl}/admin/menu/update/${menuId}`,
+    //         {
+    //             method: "PATCH",
+    //             headers: { "Content-Type": "application/json" },
+    //             body: JSON.stringify({
+    //                 type: "dinner",
+    //                 field: editedDinnerValue,
+    //             }),
+    //         }
+    //     );
+    //     const updatedMenu = await response.json();
+    //     dispatch(setUpdateMessMenu({ menu: updatedMenu }));
+    //     setIsEditDinner(false);
+    // };
 
     return (
         <Box
