@@ -6,6 +6,7 @@ import { setUpdateMessMenu } from "state";
 
 const Menu = ({ menuId, day, breakfast, lunch, snack, dinner, isEditable }) => {
     const dispatch = useDispatch();
+    const BaseUrl = process.env.REACT_APP_Backend_Url; // Fetching Base URL from .env
 
     const dayA = day.toUpperCase();
     const breakfastA = breakfast.toUpperCase();
@@ -59,7 +60,7 @@ const Menu = ({ menuId, day, breakfast, lunch, snack, dinner, isEditable }) => {
 
     const handleBreakfastEdit = async () => {
         const response = await fetch(
-            `http://localhost:3001/admin/menu/update/${menuId}`,
+            `${BaseUrl}/admin/menu/update/${menuId}`,
             {
                 method: "PATCH",
                 headers: { "Content-Type": "application/json" },
@@ -75,7 +76,7 @@ const Menu = ({ menuId, day, breakfast, lunch, snack, dinner, isEditable }) => {
     };
     const handleLunchEdit = async () => {
         const response = await fetch(
-            `http://localhost:3001/admin/menu/update/${menuId}`,
+            `${BaseUrl}/admin/menu/update/${menuId}`,
             {
                 method: "PATCH",
                 headers: { "Content-Type": "application/json" },
@@ -91,7 +92,7 @@ const Menu = ({ menuId, day, breakfast, lunch, snack, dinner, isEditable }) => {
     };
     const handleSnackEdit = async () => {
         const response = await fetch(
-            `http://localhost:3001/admin/menu/update/${menuId}`,
+            `${BaseUrl}/admin/menu/update/${menuId}`,
             {
                 method: "PATCH",
                 headers: { "Content-Type": "application/json" },
@@ -107,7 +108,7 @@ const Menu = ({ menuId, day, breakfast, lunch, snack, dinner, isEditable }) => {
     };
     const handleDinnerEdit = async () => {
         const response = await fetch(
-            `http://localhost:3001/admin/menu/update/${menuId}`,
+            `${BaseUrl}/admin/menu/update/${menuId}`,
             {
                 method: "PATCH",
                 headers: { "Content-Type": "application/json" },
@@ -135,132 +136,66 @@ const Menu = ({ menuId, day, breakfast, lunch, snack, dinner, isEditable }) => {
             >
                 {dayA}
             </Typography>
-            <Box
-                width={"100%"}
-                // display={"flex"}
-                // flexDirection={"column"}
-                // justifyContent={"space-around"}
-                // alignItems={"center"}
-            >
+            <Box width={"100%"}>
                 <Divider textAlign="left">Breakfast</Divider>
                 <Box
-                    onHover
                     onClick={handleBreakfastClick}
                     sx={{
                         m: "1rem 1rem",
-                        transition: "transform 0.2s", // Add a smooth transition effect
+                        transition: "transform 0.2s",
                         ...(isEditable && {
                             "&:hover": {
-                                transform: "scale(1.1)", // Increase the scale on hover
+                                transform: "scale(1.1)",
                             },
                         }),
                     }}
                 >
-                    <>{breakfastA}</>
-                    {/* {isEditBreakfast ? (
-                        <>
-                            <TextField
-                                value={editedBreakValue}
-                                onChange={handleBreakChange}
-                                // onBlur={handleTextFieldBlur}
-                                autoFocus // Autofocus on the TextField when in editing mode
-                            />
-                            <IconButton onClick={handleBreakfastEdit}>
-                                <CheckCircle />
-                            </IconButton>
-                        </>
-                    ) : (
-                    )} */}
+                    {breakfastA}
                 </Box>
                 <Divider textAlign="left">Lunch</Divider>
                 <Box
-                    onHover
                     onClick={handleLunchClick}
                     sx={{
                         m: "1rem 1rem",
-                        transition: "transform 0.2s", // Add a smooth transition effect
+                        transition: "transform 0.2s",
                         ...(isEditable && {
                             "&:hover": {
-                                transform: "scale(1.1)", // Increase the scale on hover
+                                transform: "scale(1.1)",
                             },
                         }),
                     }}
                 >
-                    <>{lunchA}</>
-                    {/* {isEditLunch ? (
-                        <>
-                            <TextField
-                                value={editedLunchValue}
-                                onChange={handleLunchChange}
-                                // onBlur={handleTextFieldBlur}
-                                autoFocus // Autofocus on the TextField when in editing mode
-                            />
-                            <IconButton onClick={handleLunchEdit}>
-                                <CheckCircle />
-                            </IconButton>
-                        </>
-                    ) : (
-                    )} */}
+                    {lunchA}
                 </Box>
                 <Divider textAlign="left">Snack</Divider>
                 <Box
-                    onHover
                     onClick={handleSnackClick}
                     sx={{
                         m: "1rem 1rem",
-                        transition: "transform 0.2s", // Add a smooth transition effect
+                        transition: "transform 0.2s",
                         ...(isEditable && {
                             "&:hover": {
-                                transform: "scale(1.1)", // Increase the scale on hover
+                                transform: "scale(1.1)",
                             },
                         }),
                     }}
                 >
-                    <>{snackA}</>
-                    {/* {isEditSnack ? (
-                        <>
-                            <TextField
-                                value={editedSnackValue}
-                                onChange={handleSnackChange}
-                                // onBlur={handleTextFieldBlur}
-                                autoFocus // Autofocus on the TextField when in editing mode
-                            />
-                            <IconButton onClick={handleSnackEdit}>
-                                <CheckCircle />
-                            </IconButton>
-                        </>
-                    ) : (
-                    )} */}
+                    {snackA}
                 </Box>
                 <Divider textAlign="left">Dinner</Divider>
                 <Box
-                    onHover
                     onClick={handleDinnerClick}
                     sx={{
                         m: "1rem 1rem",
-                        transition: "transform 0.2s", // Add a smooth transition effect
+                        transition: "transform 0.2s",
                         ...(isEditable && {
                             "&:hover": {
-                                transform: "scale(1.1)", // Increase the scale on hover
+                                transform: "scale(1.1)",
                             },
                         }),
                     }}
                 >
-                    <>{dinnerA}</>
-                    {/* {isEditDinner ? (
-                        <>
-                            <TextField
-                                value={editedDinnerValue}
-                                onChange={handleDinnerChange}
-                                // onBlur={handleTextFieldBlur}
-                                autoFocus // Autofocus on the TextField when in editing mode
-                            />
-                            <IconButton onClick={handleDinnerEdit}>
-                                <CheckCircle />
-                            </IconButton>
-                        </>
-                    ) : (
-                    )} */}
+                    {dinnerA}
                 </Box>
             </Box>
         </Box>

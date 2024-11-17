@@ -4,7 +4,6 @@ import {
     Paper,
     TextField,
     useMediaQuery,
-    // useTheme;
 } from "@mui/material";
 import { useDispatch } from "react-redux";
 
@@ -27,24 +26,21 @@ const Form = () => {
     const dispatch = useDispatch();
 
     const isDesktop = useMediaQuery("(min-width:600px)");
+    const BaseUrl = process.env.REACT_APP_Backend_Url; // Fetching Base URL from .env
 
     const registerComplaint = async (values, onSubmitProps) => {
         const formData = new FormData();
         for (let value in values) {
             formData.append(value, values[value]);
         }
-        // for (const pair of formData.entries()) {
-        //     console.log(pair[0] + ", " + pair[1]);
-        // }
 
         const savedUserResponse = await fetch(
-            "http://localhost:3001/admin/expenses/add",
+            `${BaseUrl}/admin/expenses/add`,
             {
                 method: "POST",
                 body: formData,
             }
         );
-        // console.log(savedUserResponse);
         const savedExpense = await savedUserResponse.json();
 
         onSubmitProps.resetForm();
@@ -70,16 +66,12 @@ const Form = () => {
                 handleBlur,
                 handleChange,
                 handleSubmit,
-                setFieldValue,
-                resetForm,
             }) => (
                 <form onSubmit={handleSubmit}>
                     <Paper
                         sx={{
-                            // width: "inherit",
                             position: "fixed",
                             bottom: 10,
-                            // left: 3,
                             right: 0,
                             padding: "16px",
                             display: "flex",
@@ -87,17 +79,6 @@ const Form = () => {
                             alignItems: "center",
                         }}
                         elevation={3}
-                        // border={"1px solid"}
-                        // borderRadius={"1rem"}
-                        // display="flex"
-                        // gap="20px"
-                        // m={"0rem 6rem 0rem 6rem"}
-
-                        // sx={{
-                        //     "& > div": {
-                        //         gridColumn: isDesktop ? undefined : "span 4",
-                        //     },
-                        // }}
                     >
                         <TextField
                             label="Name of the Item"
@@ -136,7 +117,6 @@ const Form = () => {
                             fullwidth="true"
                             type="submit"
                             sx={{
-                                // backgroundColor={primary}
                                 color: "primary",
                                 "&:hover": { color: "secondary" },
                             }}
