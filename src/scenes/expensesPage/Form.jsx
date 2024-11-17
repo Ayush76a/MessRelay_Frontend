@@ -3,7 +3,6 @@ import {
     Button,
     Paper,
     TextField,
-    useMediaQuery,
 } from "@mui/material";
 import { useDispatch } from "react-redux";
 
