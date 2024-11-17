@@ -25,7 +25,7 @@ const initialComplaintValues = {
 const Form = () => {
     const dispatch = useDispatch();
 
-    const isDesktop = useMediaQuery("(min-width:600px)");
+    // const isDesktop = useMediaQuery("(min-width:600px)");
     const BaseUrl = process.env.REACT_APP_Backend_Url; // Fetching Base URL from .env
 
     const registerComplaint = async (values, onSubmitProps) => {
